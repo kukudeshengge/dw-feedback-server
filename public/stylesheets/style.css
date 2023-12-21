@@ -1,14 +1,43 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Table Head */
+table thead th {
+    background-color: rgb(81, 130, 187);
+    color: #fff;
+    border-bottom-width: 0;
+    text-align: center;
+}
+a{
+    font-size: 12px;
+    height: 0;
+    display: inline-block;
+}
+/* Column Style */
+table td {
+    color: #000;
 }
 
-a {
-  color: #00B7FF;
+/* Heading and Column Style */
+table tr, table th {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(81, 130, 187);
+}
+
+
+/* Padding and font style */
+table td, table th {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.list-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-color: #333333;
 }
 
 .list-table img {
     width: 50px;
     height: 50px;
     object-fit: cover;
-    margin-bottom: 10px;
 }
