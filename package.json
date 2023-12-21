@@ -1,0 +1,21 @@
+{
+  "name": "feedback-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env PORT=8962 nodemon ./bin/www",
+    "start": "cross-env PORT=8962 node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "silly-datetime": "^0.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
