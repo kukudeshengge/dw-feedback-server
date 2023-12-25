@@ -11,7 +11,7 @@ router.get('/', async function (req, res, next) {
   })
   res.render('index', {
     title: '洞窝小工具意见反馈',
-    list: list
+    list: list.reverse()
   })
 })
 
