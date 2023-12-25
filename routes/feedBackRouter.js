@@ -1,15 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const fs = require('fs')
-const path = require('path')
 const datetime = require('silly-datetime')
+const mongodb = require('../db/mongodb')
 
-const listPath = path.resolve(__dirname, '../data/list.json')
-router.post('/save', function (req, res) {
+router.post('/save', async function (req, res) {
   try {
     const { name, desc, fileList } = req.body
-    const list = fs.readFileSync(listPath, 'utf-8')
-    const newList = list ? JSON.parse(list) : []
     if (!desc || desc?.trim() === '') {
       return res.json({
         code: '500',
@@ -17,8 +13,13 @@ router.post('/save', function (req, res) {
       })
     }
     const submitTime = datetime.format(new Date(), 'YYYY-MM-DD HH:mm')
-    newList.push({ name, desc, fileList, submitTime })
-    fs.writeFileSync(listPath, JSON.stringify(newList), 'utf-8')
+    const db = await mongodb()
+    await db.collection('feedBack').insertOne({
+      name,
+      desc,
+      fileList: JSON.stringify(fileList || []),
+      submitTime
+    })
     res.json({
       code: '200',
       message: '保存成功'

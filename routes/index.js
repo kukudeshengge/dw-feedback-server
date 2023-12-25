@@ -1,15 +1,17 @@
 const express = require('express')
-const path = require('path')
-const fs = require('fs')
 const router = express.Router()
-const listPath = path.resolve(__dirname, '../data/list.json')
+const mongodb = require('../db/mongodb')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  const list = fs.readFileSync(listPath, 'utf-8')
+router.get('/', async function (req, res, next) {
+  const db = await mongodb();
+  const list = await db.collection('feedBack').find({}).toArray();
+  list.forEach(item => {
+    item.fileList = JSON.parse(item.fileList);
+  })
   res.render('index', {
     title: '洞窝小工具意见反馈',
-    list: list ? JSON.parse(list) : []
+    list: list
   })
 })
 
