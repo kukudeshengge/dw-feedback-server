@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "dw-feedback-server@8962",
+      "script": "/bin/www",
+      "args": [
+        "start",
+        "-p",
+        "8962"
+      ]
+    }
+  ]
+}
