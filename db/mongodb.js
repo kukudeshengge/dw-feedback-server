@@ -11,7 +11,7 @@ async function connect () {
     db = client.db(dbName)
     return db
   } catch (err) {
-    console.log(err)
+    console.log(err, 'connect error');
   }
 }
 
